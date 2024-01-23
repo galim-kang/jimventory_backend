@@ -26,7 +26,8 @@ class CustomUser(AbstractUser):
     )
     user_type = models.CharField(max_length=10, choices=USER_TYPES, default='tourist')
     email = models.EmailField(unique=True)
-
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
