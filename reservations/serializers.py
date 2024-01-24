@@ -9,8 +9,9 @@ class StorageSerializer(serializers.ModelSerializer):
 
 class ReservationSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
-    storage = StorageSerializer()  # Storage에 대한 정보를 포함
+    storage = serializers.PrimaryKeyRelatedField(queryset=Storage.objects.all())
 
     class Meta:
         model = Reservation
         fields = '__all__'
+        
